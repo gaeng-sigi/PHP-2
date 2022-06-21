@@ -18,7 +18,8 @@ abstract class Controller
     protected function getView($view)
     {
         if (strpos($view, "redirect:") === 0) {
-            header("Location: http://" . _HOST . substr($view, 9));
+            header("Location: " . substr($view, 9));
+            return;
         }
         return _VIEW . "/" . $view; // "" 없고, $도 없고 문자가 다 대문자면 상수다.
     }
