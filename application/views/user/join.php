@@ -6,7 +6,7 @@
 
         <div>
             성별:
-            <label>여성 <input type="radio" name="gender" value="0"></label>
+            <label>여성 <input type="radio" name="gender" value="0" checked></label>
             <label>남성 <input type="radio" name="gender" value="1"></label>
         </div>
         <div>
