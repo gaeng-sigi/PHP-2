@@ -33,6 +33,20 @@ class BoardModel extends Model
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
+    public function updBoard(&$param)
+    {
+        $sql = "UPDATE t_board
+                SET title = :title, ctnt = :ctnt
+                WHERE i_board = :i_board";
+
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':i_board', $param["i_board"]);
+        $stmt->bindValue(':title', $param["title"]);
+        $stmt->bindValue(':ctnt', $param["ctnt"]);
+
+        $stmt->execute();
+    }
+
     public function delBoard(&$param)
     {
         $sql = "DELETE FROM t_board
@@ -40,6 +54,7 @@ class BoardModel extends Model
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':i_board', $param["i_board"]);
-        return $stmt->execute();
+
+        $stmt->execute();
     }
 }

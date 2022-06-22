@@ -8,6 +8,7 @@ define('_DBPASSWORD', '506greendg@'); //비번
 define('_CHARSET', 'utf8');
 define("_VIEW", "application/views/");
 
+define("_TITLE", "title");
 define("_HEADER", "header");
 define("_MAIN", "main");
 define("_FOOTER", "footer");
