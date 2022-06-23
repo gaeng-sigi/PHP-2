@@ -54,11 +54,11 @@ class UserController extends Controller
         $dbUser = $model->selUser($param);
 
         if ($dbUser === false) { // 아이디 없음.
-            print "아이디 없음<br>";
+            print "<script>alert('아이디 없음')</script>";
 
             return $this->login();
         } else if (!password_verify($param["upw"], $dbUser->upw)) { // 비밀번호 다름
-            print "비밀번호 다름<br>";
+            print "<script>alert('비밀번호 다름')</script>";
 
             return $this->login();
         }
