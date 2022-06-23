@@ -12,11 +12,8 @@ class BoardModel extends Model
                 VALUES(:title, :ctnt, :i_user)";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':title', $param["title"]);
-        $stmt->bindValue(':ctnt', $param["ctnt"]);
-        $stmt->bindValue(':i_user', $param["i_user"]);
 
-        $stmt->execute();
+        $stmt->execute(array($param["title"], $param["ctnt"], $param["i_user"]));
     }
 
     public function selBoardList()
@@ -43,9 +40,8 @@ class BoardModel extends Model
                 WHERE A.i_board = :i_board";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':i_board', $param["i_board"]); // bindValue 숫자면 그냥 문자면 "" 넣어서 들어간다.
 
-        $stmt->execute();
+        $stmt->execute(array($param["i_board"]));
 
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
@@ -57,11 +53,8 @@ class BoardModel extends Model
                 WHERE i_board = :i_board";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':i_board', $param["i_board"]);
-        $stmt->bindValue(':title', $param["title"]);
-        $stmt->bindValue(':ctnt', $param["ctnt"]);
 
-        $stmt->execute();
+        $stmt->execute(array($param["title"], $param["ctnt"], $param["i_board"]));
     }
 
     public function delBoard(&$param)
@@ -70,8 +63,7 @@ class BoardModel extends Model
                 WHERE i_board = :i_board";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':i_board', $param["i_board"]);
 
-        $stmt->execute();
+        $stmt->execute(array($param["i_board"]));
     }
 }

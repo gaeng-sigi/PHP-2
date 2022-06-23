@@ -12,11 +12,8 @@ class UserModel extends Model
                 VALUES(:uid, :upw, :nm, :gender)";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":uid", $param["uid"]);
-        $stmt->bindValue(":upw", $param["upw"]);
-        $stmt->bindValue(":nm", $param["nm"]);
-        $stmt->bindValue(":gender", $param["gender"]);
-        $stmt->execute();
+
+        $stmt->execute(array($param["uid"], $param["upw"], $param["nm"], $param["gender"]));
     }
 
     public function selUser(&$param)
@@ -24,8 +21,8 @@ class UserModel extends Model
         $sql = "SELECT * FROM t_user WHERE uid = :uid";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(":uid", $param["uid"]);
-        $stmt->execute();
+
+        $stmt->execute(array($param["uid"]));
 
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
