@@ -6,7 +6,6 @@
 <body>
     <h1>디테일</h1>
     <div>
-        <a href="list"><button>리스트</button></a>
         <a href="mod?i_board=<?= $this->data->i_board ?>"><button>수정</button></a>
         <button id="btnDel" value="<?= $this->data->i_board ?>" data-i_board=<?= $this->data->i_board ?>>삭제</button>
     </div>
